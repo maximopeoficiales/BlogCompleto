@@ -13,6 +13,6 @@ class CommentsModel extends Model
     /* evita eliminacion de informacion y solo pone en 1 */
     /* Datos a Insertar */
     protected $allowedFields=[
-        "id_post","name","email","comment","role"
+        "id_post","name","email","comment","role","created_at"
     ];
 }

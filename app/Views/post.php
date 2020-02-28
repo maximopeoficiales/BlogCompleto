@@ -6,9 +6,10 @@
 
         <div class="entry__media col-full">
             <div class="entry__post-thumb">
-                <?php $url = base_url() . "/uploads/" . $post[0]['banner'];
-                ?>
+                <?php $url = base_url() . "/uploads/" . $post[0]['banner']; ?>
+                <div class="text-center">
                 <img src="<?= $url ?>" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </div>
             </div>
         </div>
 
@@ -151,22 +152,24 @@
         <!-- obtencion de posts ramdom -->
         <?php
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT * FROM posts order by rand() limit 2");
+        $query = $db->query("SELECT * FROM posts order by rand() limit 2");/* rand= ramdom */
         $result = $query->getResult();
         ?>
         <div class="row s-content__nav">
-            <div class="col-six s-content__prev">
+            <div class="col-six s-content__prev text-center">
                 <a href="<?= base_url() . '/dashboard/post/' . $result[0]->slug . '/' . $result[0]->id_post ?>" rel="prev">
                     <span>Previous Post</span>
+                    <img src="<?= base_url() . "/uploads/" . $result[0]->banner;   ?>" alt="" class="post-thumb">
                     <?php
                     echo $result[0]->title;
                     ?>
 
                 </a>
             </div>
-            <div class="col-six s-content__next">
+            <div class="col-six s-content__next text-center">
                 <a href="<?= base_url() . '/dashboard/post/' . $result[1]->slug . '/' . $result[1]->id_post ?>" rel="next">
                     <span>Next Post</span>
+                    <img src="<?= base_url() . "/uploads/" . $result[1]->banner;   ?>" alt="" class="post-thumb">
                     <?php
                     echo $result[1]->title;
                     ?>
@@ -180,7 +183,7 @@
         <div id="comments" class="row">
             <div class="col-full">
 
-                <h3 class="h2"><?php print_r($countcomments)?> Comments</h3>
+                <h3 class="h2"><?php print_r($countcomments) ?> Comments</h3>
 
                 <!-- START commentlist -->
                 <ol class="commentlist">
@@ -201,7 +204,7 @@
                                     <div class="comment__author"><?= $c['name']  ?></div>
 
                                     <div class="comment__meta">
-                                        <div class="comment__time">Jun 15, 2018</div>
+                                        <div class="comment__time"><?= $c['created_at']  ?></div>
                                         <div class="comment__reply">
                                             <a class="comment-reply-link" href="#0">Reply</a>
                                         </div>

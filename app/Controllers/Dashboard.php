@@ -15,6 +15,7 @@ class Dashboard extends BaseController
 	{
 
 		$this->loadViews('index');
+
 	}
 
 	public function uploadPost()
@@ -124,10 +125,12 @@ class Dashboard extends BaseController
 					echo "error";
 				} else {
 					echo "success";
+					$fecha=date("Y-m-d");
 					$arraycomment = [
 						"name" => $_POST['cName'],
 						"email" => $_POST['cEmail'],
 						"comment" => $_POST['cMessage'],
+						"created_at"=>$fecha,
 						"id_post" => $id
 					];
 					$commentsmodel->insert($arraycomment);

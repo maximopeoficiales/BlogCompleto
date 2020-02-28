@@ -1,4 +1,3 @@
-
 <section class="s-featured">
     <div class="row">
         <div class="col-full">
